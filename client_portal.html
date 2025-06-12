@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Complete - TRE Geriatric Care</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='80' text-anchor='middle' dominant-baseline='central'%3E👵%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply bg-gray-50 text-gray-800;
+        }
+        .gradient-bg-footer {
+            background: linear-gradient(to right, #3B82F6, #6EE7B7);
+        }
+        .btn-primary {
+            @apply bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg;
+        }
+        .nav-link {
+            @apply text-white hover:text-blue-200 transition duration-300;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+        .footer-link {
+            @apply text-gray-200 hover:text-white transition duration-300;
+        }
+        /* Ensure responsive image handling */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Accessibility improvements */
+        :focus-visible {
+            outline: 2px solid theme('colors.blue.500');
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="bg-blue-800 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-white text-2xl font-bold rounded-lg p-2 transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                TRE <span class="text-base font-normal block -mt-1">Geriatric Care</span>
+            </a>
+            <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none focus:ring-2 focus:ring-blue-300 p-2 rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <nav class="hidden lg:flex space-x-6">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="careers.php" class="nav-link">Careers</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="client_portal.html" class="nav-link">Client Portal</a>
+                
+            </nav>
+        </div>
+        <nav id="mobile-menu" class="hidden lg:hidden bg-blue-700 mt-2 rounded-lg">
+            <ul class="flex flex-col items-center py-4 space-y-3">
+                <li><a href="index.html" class="nav-link block px-4 py-2">Home</a></li>
+                <li><a href="about.html" class="nav-link block px-4 py-2">About Us</a></li>
+                <li><a href="services.html" class="nav-link block px-4 py-2">Services</a></li>
+                <li><a href="careers.php" class="nav-link block px-4 py-2">Careers</a></li>
+                <li><a href="contact.html" class="nav-link block px-4 py-2">Contact Us</a></li>
+                <li><a href="client_portal.html" class="nav-link block px-4 py-2">Client Portal</a></li>
+                <li><a href="payment.html" class="nav-link block px-4 py-2">Make Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow py-16 px-4">
+        <div class="container mx-auto max-w-3xl text-center">
+            <div class="card p-8 bg-green-50">
+                <svg class="mx-auto h-24 w-24 text-green-500 mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h1 class="text-4xl font-extrabold text-green-700 mb-4">Transaction Complete!</h1>
+                <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                    Your payment has been successfully processed, and your application has been submitted.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-700 mb-8">
+                    We appreciate your interest in joining the TRE Geriatric Care family. Our team will review your application and payment details. You will be contacted within **two weeks** regarding the next steps in the hiring process.
+                </p>
+                <p class="text-md text-gray-600">
+                    Thank you for your patience and cooperation.
+                </p>
+                <div class="mt-8">
+                    <a href="index.html" class="btn-primary bg-blue-600 hover:bg-blue-700 inline-flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m0 0l7 7m-5 5v5a1 1 0 01-1 1h-3" />
+                        </svg>
+                        Return to Home Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="gradient-bg-footer text-white py-8 px-4 rounded-t-3xl shadow-inner mt-12">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold">TRE Geriatric Care</h3>
+                <p class="text-sm text-gray-200">&copy; 2025 All rights reserved.</p>
+            </div>
+            <nav class="flex flex-wrap justify-center md:justify-end space-x-6">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="services.html" class="footer-link">Services</a>
+                <a href="careers.php" class="footer-link">Careers</a>
+                <a href="contact.html" class="footer-link">Contact Us</a>
+                <a href="client_portal.html" class="footer-link">Client Portal</a>
+                <a href="payment.html" class="footer-link">Make Payment</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Optional: Close mobile menu when a link is clicked
+        if (mobileMenu) {
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

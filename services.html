@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - TRE Geriatric Care</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='80' text-anchor='middle' dominant-baseline='central'%3E👵%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply bg-gray-50 text-gray-800;
+        }
+        .gradient-bg-footer {
+            background: linear-gradient(to right, #3B82F6, #6EE7B7);
+        }
+        .btn-primary {
+            @apply bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg;
+        }
+        .nav-link {
+            @apply text-white hover:text-blue-200 transition duration-300;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+        .footer-link {
+            @apply text-gray-200 hover:text-white transition duration-300;
+        }
+        /* Ensure responsive image handling */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Accessibility improvements */
+        :focus-visible {
+            outline: 2px solid theme('colors.blue.500');
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-800 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo / Site Title -->
+            <a href="index.html" class="text-white text-2xl font-bold rounded-lg p-2 transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                TRE <span class="text-base font-normal block -mt-1">Geriatric Care</span>
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none focus:ring-2 focus:ring-blue-300 p-2 rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden lg:flex space-x-6">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="careers.php" class="nav-link">Careers</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+               
+                 <!-- Added link -->
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-menu" class="hidden lg:hidden bg-blue-700 mt-2 rounded-lg">
+            <ul class="flex flex-col items-center py-4 space-y-3">
+                <li><a href="index.html" class="nav-link block px-4 py-2">Home</a></li>
+                <li><a href="about.html" class="nav-link block px-4 py-2">About Us</a></li>
+                <li><a href="services.html" class="nav-link block px-4 py-2">Services</a></li>
+                <li><a href="careers.php" class="nav-link block px-4 py-2">Careers</a></li>
+                <li><a href="contact.html" class="nav-link block px-4 py-2">Contact Us</a></li>
+                <li><a href="client_portal.html" class="nav-link block px-4 py-2">Client Portal</a></li>
+                <li><a href="payment.html" class="nav-link block px-4 py-2">Make Payment</a></li> <!-- Added link -->
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow py-16 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <h1 class="text-5xl font-extrabold text-center text-blue-800 mb-12">Our Comprehensive Services</h1>
+
+            <p class="text-center text-lg leading-relaxed text-gray-700 mb-12 max-w-3xl mx-auto">
+                At TRE Geriatric Care, we offer a wide range of services designed to improve the lives of the elderly, enhance their health, and help them live independently. We welcome you to reach out to learn more about how we can support you or your loved ones with compassionate and professional care.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Service 1: Home Health Care -->
+                <section id="home-health-care" class="card bg-blue-50">
+                    <h2 class="text-3xl font-bold text-blue-700 mb-4 border-b-2 border-blue-300 pb-3">1. Home Health Care</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>In-home medical assistance, such as medication management, wound care, dialysis, or IV therapy.</li>
+                        <li>Involvement of geriatric nurses or physical therapists.</li>
+                    </ul>
+                </section>
+
+                <!-- Service 2: Activities of Daily Living (ADL) -->
+                <section id="adl-support" class="card bg-green-50">
+                    <h2 class="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-300 pb-3">2. Activities of Daily Living (ADL) Support</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Assistance for the elderly with basic activities like bathing, dressing, eating, and mobility.</li>
+                        <li>Includes personal assistance such as changing clothes or body hygiene.</li>
+                    </ul>
+                </section>
+
+                <!-- Service 3: Nutrition and Meal Services -->
+                <section id="nutrition-meals" class="card bg-purple-50">
+                    <h2 class="text-3xl font-bold text-purple-700 mb-4 border-b-2 border-purple-300 pb-3">3. Nutrition and Meal Services</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Preparation of healthy meals or home-delivered meals.</li>
+                        <li>Companies like Senior Helpers can provide meal plans tailored to the health needs of the elderly.</li>
+                    </ul>
+                </section>
+
+                <!-- Service 4: Money Management -->
+                <section id="money-management" class="card bg-orange-50">
+                    <h2 class="text-3xl font-bold text-orange-700 mb-4 border-b-2 border-orange-300 pb-3">4. Money Management</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Assisting the elderly with managing bills, budgeting, or long-term care insurance issues.</li>
+                        <li>Some companies offer financial management services for seniors needing financial assistance.</li>
+                    </ul>
+                </section>
+
+                <!-- Service 5: Transportation Services -->
+                <section id="transportation-services" class="card bg-red-50">
+                    <h2 class="text-3xl font-bold text-red-700 mb-4 border-b-2 border-red-300 pb-3">5. Transportation Services</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Providing transportation for the elderly to hospitals, shops, or community centers.</li>
+                        <li>These helps elderly individuals who are unable to drive or use public transport.</li>
+                    </ul>
+                </section>
+
+                <!-- Service 6: Physical and Occupational Therapy -->
+                <section id="physical-occupational-therapy" class="card bg-yellow-50">
+                    <h2 class="text-3xl font-bold text-yellow-700 mb-4 border-b-2 border-yellow-300 pb-3">6. Physical and Occupational Therapy</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Physical therapy or occupational therapy services to help the elderly regain strength, balance, or daily skills.</li>
+                        <li>These can be provided at home or at elderly centers.</li>
+                    </ul>
+                </section>
+
+                <!-- Service 7: Companionship and Social Support -->
+                <section id="social-support" class="card bg-indigo-50">
+                    <h2 class="text-3xl font-bold text-indigo-700 mb-4 border-b-2 border-indigo-300 pb-3">7. Companionship and Social Support</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Providing emotional companionship for lonely seniors through conversation, games, or recreational activities.</li>
+                        <li>Companies like Visiting Angels emphasize the importance of enhancing the social lives of seniors.</li>
+                    </ul>
+                </section>
+
+                <!-- Service 8: Elderly Care Management (TRE Management) -->
+                <section id="tre-management" class="card bg-pink-50">
+                    <h2 class="text-3xl font-bold text-pink-700 mb-4 border-b-2 border-pink-300 pb-3">8. Elderly Care Management (TRE Management)</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Developing personalized care plans, coordinating with doctors, or collaborating with elderly families.</li>
+                        <li>Professionals like care managers can assist with health and housing decisions.</li>
+                    </ul>
+                </section>
+
+                <!-- Service 9: Mental Health Services -->
+                <section id="mental-health" class="card bg-teal-50">
+                    <h2 class="text-3xl font-bold text-teal-700 mb-4 border-b-2 border-teal-300 pb-3">9. Mental Health Services</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Psychological support for the elderly facing depression, anxiety, or conditions like Alzheimer's or dementia.</li>
+                        <li>This may include counseling or behavioral therapy.</li>
+                    </ul>
+                </section>
+
+                <!-- Service 10: Adult Day Services -->
+                <section id="adult-day-services" class="card bg-cyan-50">
+                    <h2 class="text-3xl font-bold text-cyan-700 mb-4 border-b-2 border-cyan-300 pb-3">10. Adult Day Services</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Day centers provide a safe environment for the elderly during the day, including social activities, meals, and health services.</li>
+                        <li>These are suitable for seniors who need daytime supervision but can return home in the evening.</li>
+                    </ul>
+                </section>
+
+                <!-- Service 11: Housing Support -->
+                <section id="housing-support" class="card bg-lime-50">
+                    <h2 class="text-3xl font-bold text-lime-700 mb-4 border-b-2 border-lime-300 pb-3">11. Housing Support</h2>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Companies can assist in finding suitable housing for the elderly, such as assisted living homes or long-term care facilities (nursing homes).</li>
+                        <li>This includes advice on housing options that match the needs of the elderly.</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg-footer text-white py-8 px-4 rounded-t-3xl shadow-inner">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold">TRE Geriatric Care</h3>
+                <p class="text-sm text-gray-200">&copy; 2025 All rights reserved.</p>
+            </div>
+            <nav class="flex flex-wrap justify-center md:justify-end space-x-6">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="services.html" class="footer-link">Services</a>
+                <a href="careers.php" class="footer-link">Careers</a>
+                <a href="contact.html" class="footer-link">Contact Us</a>
+                <a href="client_portal.html" class="footer-link">Client Portal</a>
+                <a href="payment.html" class="footer-link">Make Payment</a> <!-- Added link -->
+            </nav>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

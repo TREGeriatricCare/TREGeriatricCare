@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - TRE Geriatric Care</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='80' text-anchor='middle' dominant-baseline='central'%3E👵%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply bg-gray-50 text-gray-800;
+        }
+        .gradient-bg-footer {
+            background: linear-gradient(to right, #3B82F6, #6EE7B7);
+        }
+        .btn-primary {
+            @apply bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg;
+        }
+        .nav-link {
+            @apply text-white hover:text-blue-200 transition duration-300;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+        .footer-link {
+            @apply text-gray-200 hover:text-white transition duration-300;
+        }
+        /* Ensure responsive image handling */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Accessibility improvements */
+        :focus-visible {
+            outline: 2px solid theme('colors.blue.500');
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-800 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo / Site Title -->
+            <a href="index.html" class="text-white text-2xl font-bold rounded-lg p-2 transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                TRE <span class="text-base font-normal block -mt-1">Geriatric Care</span>
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none focus:ring-2 focus:ring-blue-300 p-2 rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden lg:flex space-x-6">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="careers.php" class="nav-link">Careers</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                 <!-- Added link -->
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-menu" class="hidden lg:hidden bg-blue-700 mt-2 rounded-lg">
+            <ul class="flex flex-col items-center py-4 space-y-3">
+                <li><a href="index.html" class="nav-link block px-4 py-2">Home</a></li>
+                <li><a href="about.html" class="nav-link block px-4 py-2">About Us</a></li>
+                <li><a href="services.html" class="nav-link block px-4 py-2">Services</a></li>
+                <li><a href="careers.php" class="nav-link block px-4 py-2">Careers</a></li>
+                <li><a href="contact.html" class="nav-link block px-4 py-2">Contact Us</a></li>
+                <li><a href="client_portal.html" class="nav-link block px-4 py-2">Client Portal</a></li>
+                <li><a href="payment.html" class="nav-link block px-4 py-2">Make Payment</a></li> <!-- Added link -->
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow py-16 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <h1 class="text-5xl font-extrabold text-center text-blue-800 mb-12">About Us</h1>
+
+            <!-- Brief History Section -->
+            <section id="history" class="mb-16 card bg-blue-50">
+                <h2 class="text-4xl font-bold text-blue-700 mb-6 border-b-2 border-blue-300 pb-4">The Kenrick Centre: A Brief History</h2>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    The Kenrick Centre was established in 1985 as a cornerstone of Birmingham City Council's commitment to providing exceptional care for the elderly in our community. Located in the heart of Harborne, Birmingham, the centre was founded to address the growing need for compassionate, high-quality TRE.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-700">
+                    Over the years, it has grown into a trusted hub for elderly support, offering a range of services tailored to enhance the well-being and independence of our residents. With a legacy of care spanning nearly four decades, The Kenrick Centre remains dedicated to uplifting the lives of seniors through personalized and community-focused services. We pride ourselves on creating a nurturing and supportive environment where every individual feels valued and empowered.
+                </p>
+            </section>
+
+            <!-- Mission and Vision Section -->
+            <section id="mission-vision" class="grid md:grid-cols-2 gap-10 mb-16">
+                <div class="card bg-green-50">
+                    <h2 class="text-4xl font-bold text-green-700 mb-6 border-b-2 border-green-300 pb-4">Our Mission</h2>
+                    <p class="text-lg leading-relaxed text-gray-700">
+                        At The Kenrick Centre, our mission is to provide compassionate, holistic care that empowers elderly individuals to live with dignity, comfort, and joy. We strive to create a nurturing environment where seniors feel valued and supported, offering personalized health, social, and emotional care to meet their unique needs. Our commitment is to enhance the quality of life for every individual we serve while fostering a sense of community and belonging.
+                    </p>
+                </div>
+                <div class="card bg-purple-50">
+                    <h2 class="text-4xl font-bold text-purple-700 mb-6 border-b-2 border-purple-300 pb-4">Our Vision</h2>
+                    <p class="text-lg leading-relaxed text-gray-700">
+                        Our vision is to be Birmingham's leading TRE provider, setting the standard for excellence in elderly care. We aim to create a future where every senior in our community has access to comprehensive, innovative, and empathetic care services that promote independence and well-being. The Kenrick Centre aspires to be a beacon of hope and support, ensuring that aging is a celebrated and fulfilling stage of life.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Key Staff Members Section -->
+            <section id="staff" class="card bg-orange-50">
+                <h2 class="text-4xl font-bold text-orange-700 mb-8 text-center border-b-2 border-orange-300 pb-4">Our Key Staff Members</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <!-- Staff Member 1 -->
+                    <div class="p-6 bg-white rounded-lg shadow-md flex flex-col items-center">
+                        <img src="image1.jpg" alt="Dr. Elizabeth Harper" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-200">
+                        <h3 class="text-xl font-semibold text-gray-800">Dr. Elizabeth Harper</h3>
+                        <p class="text-blue-600 font-medium">Director of Care Services</p>
+                        <p class="text-sm text-gray-600 mt-2">
+                            With over 20 years of experience in geriatric healthcare, Dr. Harper oversees all care programs at The Kenrick Centre, ensuring high standards of medical and emotional support for residents.
+                        </p>
+                    </div>
+                    <!-- Staff Member 2 -->
+                    <div class="p-6 bg-white rounded-lg shadow-md flex flex-col items-center">
+                        <img src="image2.jpg" alt="Ms. Sarah Mwangi" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-200">
+                        <h3 class="text-xl font-semibold text-gray-800">Ms. Sarah Mwangi</h3>
+                        <p class="text-blue-600 font-medium">Head of Community Engagement</p>
+                        <p class="text-sm text-gray-600 mt-2">
+                            Sarah leads our efforts to create vibrant social programs, connecting residents with the Harborne community through events and activities.
+                        </p>
+                    </div>
+                    <!-- Staff Member 3 -->
+                    <div class="p-6 bg-white rounded-lg shadow-md flex flex-col items-center">
+                        <img src="image3.jpg" alt="Mr. James Patel" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-200">
+                        <h3 class="text-xl font-semibold text-gray-800">Mr. James Patel</h3>
+                        <p class="text-blue-600 font-medium">Facility Manager</p>
+                        <p class="text-sm text-gray-600 mt-2">
+                            James ensures the smooth operation of the centre, managing staff and resources to maintain a safe and welcoming environment for all.
+                        </p>
+                    </div>
+                    <!-- Staff Member 4 -->
+                    <div class="p-6 bg-white rounded-lg shadow-md flex flex-col items-center">
+                        <img src="image4.jpg" alt="Nurse Amina Khan" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-orange-200">
+                        <h3 class="text-xl font-semibold text-gray-800">Nurse Amina Khan</h3>
+                        <p class="text-blue-600 font-medium">Lead Geriatric Nurse</p>
+                        <p class="text-sm text-gray-600 mt-2">
+                            Amina brings expertise in elderly healthcare, coordinating medical care and rehabilitation services to support residents' physical well-being.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg-footer text-white py-8 px-4 rounded-t-3xl shadow-inner">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold">TRE Geriatric Care</h3>
+                <p class="text-sm text-gray-200">&copy; 2025 All rights reserved.</p>
+            </div>
+            <nav class="flex flex-wrap justify-center md:justify-end space-x-6">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="services.html" class="footer-link">Services</a>
+                <a href="careers.php" class="footer-link">Careers</a>
+                <a href="contact.html" class="footer-link">Contact Us</a>
+                <a href="client_portal.html" class="footer-link">Client Portal</a>
+                <a href="payment.html" class="footer-link">Make Payment</a> <!-- Added link -->
+            </nav>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

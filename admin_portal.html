@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - TRE Geriatric Care</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='80' text-anchor='middle' dominant-baseline='central'%3E👵%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply bg-gray-50 text-gray-800;
+        }
+        /* Custom styles for gradients and shadows */
+        .gradient-bg-footer {
+            background: linear-gradient(to right, #3B82F6, #6EE7B7);
+        }
+        .btn-primary {
+            @apply bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg;
+        }
+        .nav-link {
+            @apply text-white hover:text-blue-200 transition duration-300;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+        .footer-link {
+            @apply text-gray-200 hover:text-white transition duration-300;
+        }
+        /* Accessibility improvements */
+        :focus-visible {
+            outline: 2px solid theme('colors.blue.500');
+            outline-offset: 2px;
+        }
+        /* Style for form elements */
+        .form-group label {
+            @apply block text-gray-700 text-sm font-bold mb-2;
+        }
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            @apply shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+        }
+        .message-box {
+            @apply p-4 rounded-lg text-white font-semibold mb-4;
+        }
+        .message-box.success {
+            @apply bg-green-500;
+        }
+        .message-box.error {
+            @apply bg-red-500;
+        }
+        .data-table {
+            @apply min-w-full bg-white border border-gray-200 rounded-lg shadow-sm;
+        }
+        .data-table th, .data-table td {
+            @apply py-3 px-4 text-left border-b border-gray-200;
+        }
+        .data-table th {
+            @apply bg-gray-100 text-gray-600 uppercase text-sm font-semibold;
+        }
+        .data-table tr:hover {
+            @apply bg-gray-50;
+        }
+        .data-container {
+            @apply max-h-96 overflow-y-auto border border-gray-200 rounded-lg;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-800 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo / Site Title -->
+            <a href="index.html" class="text-white text-2xl font-bold rounded-lg p-2 transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                TRE <span class="text-base font-normal block -mt-1">Geriatric Care</span>
+            </a>
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden lg:flex space-x-6">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="careers.php" class="nav-link">Careers</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                
+                
+                <a href="admin_portal.html" class="nav-link font-bold">Admin Portal</a> <!-- Added admin portal link -->
+            </nav>
+        </div>
+        <!-- Mobile Menu Button - (Not implemented for admin for simplicity) -->
+        <!-- <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none focus:ring-2 focus:ring-blue-300 p-2 rounded-md">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button> -->
+    </header>
+
+    <main class="flex-grow py-16 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <h1 class="text-5xl font-extrabold text-center text-blue-800 mb-12">Admin Portal</h1>
+
+            <!-- Login Section -->
+            <section id="admin-login-section" class="card p-8 bg-blue-100 mb-8 max-w-md mx-auto">
+                <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">Admin Login</h2>
+                <div id="login-message-container" class="hidden"></div>
+                <form id="admin-login-form" class="space-y-4">
+                    <div class="form-group">
+                        <label for="adminEmail">Email:</label>
+                        <input type="email" id="adminEmail" placeholder="admin@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">Password:</label>
+                        <input type="password" id="adminPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary w-full">Login</button>
+                </form>
+            </section>
+
+            <!-- Admin Content Section (Hidden until logged in) -->
+            <section id="admin-content-section" class="hidden">
+                <div class="text-right mb-4">
+                    <button id="admin-logout-button" class="btn-primary bg-red-600 hover:bg-red-700">Logout</button>
+                </div>
+
+                <!-- User ID Display -->
+                <div class="card p-4 bg-gray-100 mb-8 text-center">
+                    <p class="text-gray-700">Logged in as (Admin ID): <span id="admin-user-id-display" class="font-bold text-blue-800 break-all"></span></p>
+                </div>
+
+                <!-- Career Applications Section -->
+                <div class="card p-8 bg-green-100 mb-12">
+                    <h2 class="text-3xl font-bold text-green-700 mb-6 border-b-2 border-green-300 pb-3">Career Applications</h2>
+                    <p class="text-gray-700 mb-4">Displays all submitted career applications and their payment status.</p>
+                    <div class="data-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Applicant Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Payment ID</th>
+                                    <th>Submitted Date</th>
+                                    <th>User ID</th>
+                                </tr>
+                            </thead>
+                            <tbody id="applications-table-body">
+                                <!-- Data will be loaded here by JavaScript -->
+                                <tr><td colspan="6" class="text-center text-gray-500">Loading applications...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Contact Inquiries Section -->
+                <div class="card p-8 bg-purple-100 mb-12">
+                    <h2 class="text-3xl font-bold text-purple-700 mb-6 border-b-2 border-purple-300 pb-3">Contact Inquiries</h2>
+                    <p class="text-gray-700 mb-4">Displays all submitted contact messages.</p>
+                    <div class="data-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Message Snippet</th>
+                                    <th>Submitted Date</th>
+                                    <th>User ID</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contact-inquiries-table-body">
+                                <!-- Data will be loaded here by JavaScript -->
+                                <tr><td colspan="6" class="text-center text-gray-500">Loading inquiries...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg-footer text-white py-8 px-4 rounded-t-3xl shadow-inner">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold">TRE Geriatric Care</h3>
+                <p class="text-sm text-gray-200">&copy; 2025 All rights reserved.</p>
+            </div>
+            <nav class="flex flex-wrap justify-center md:justify-end space-x-6">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="services.html" class="footer-link">Services</a>
+                <a href="careers.php" class="footer-link">Careers</a>
+                <a href="contact.html" class="footer-link">Contact Us</a>
+                <a href="client_portal.html" class="footer-link">Client Portal</a>
+                <a href="payment.html" class="footer-link">Make Payment</a>
+                <a href="admin_portal.html" class="footer-link font-bold">Admin Portal</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collectionGroup, query, onSnapshot, orderBy, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase configuration (provided by the environment)
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // --- UI Elements ---
+        const adminLoginSection = document.getElementById('admin-login-section');
+        const adminLoginForm = document.getElementById('admin-login-form');
+        const loginMessageContainer = document.getElementById('login-message-container');
+        const adminContentSection = document.getElementById('admin-content-section');
+        const adminLogoutButton = document.getElementById('admin-logout-button');
+        const adminUserIdDisplay = document.getElementById('admin-user-id-display');
+        const applicationsTableBody = document.getElementById('applications-table-body');
+        const contactInquiriesTableBody = document.getElementById('contact-inquiries-table-body');
+
+        // --- Admin Specific Configuration ---
+        // For demonstration, use a simple admin email/password.
+        // In a real application, consider Firebase Admin SDK for user management
+        // or more secure authentication methods (e.g., custom claims for roles).
+        const ADMIN_EMAIL = "admin@gmail.com";
+        const ADMIN_PASSWORD = "password123"; // CHANGE THIS IN PRODUCTION!
+
+        // --- Helper Function for Messages ---
+        function showMessage(container, message, type) {
+            container.textContent = message;
+            container.className = `message-box ${type}`;
+            container.classList.remove('hidden');
+            setTimeout(() => {
+                container.classList.add('hidden');
+            }, 5000); // Hide after 5 seconds
+        }
+
+        // --- Authentication Logic ---
+        adminLoginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = adminLoginForm.adminEmail.value;
+            const password = adminLoginForm.adminPassword.value;
+
+            if (email !== ADMIN_EMAIL || password !== ADMIN_PASSWORD) {
+                showMessage(loginMessageContainer, 'Invalid admin credentials.', 'error');
+                return;
+            }
+
+            try {
+                // Attempt to sign in with admin credentials
+                await signInWithEmailAndPassword(auth, email, password);
+                showMessage(loginMessageContainer, 'Logged in as Admin!', 'success');
+                // UI will be updated by onAuthStateChanged listener
+            } catch (error) {
+                console.error("Admin login error:", error);
+                showMessage(loginMessageContainer, `Login failed: ${error.message}`, 'error');
+            }
+        });
+
+        adminLogoutButton.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                showMessage(loginMessageContainer, 'Logged out successfully.', 'success');
+                // UI will be updated by onAuthStateChanged listener
+            } catch (error) {
+                console.error("Admin logout error:", error);
+                showMessage(loginMessageContainer, `Logout failed: ${error.message}`, 'error');
+            }
+        });
+
+        // --- Firebase Auth State Listener ---
+        onAuthStateChanged(auth, async (user) => {
+            if (user && user.email === ADMIN_EMAIL) { // Ensure it's the specific admin user
+                console.log("Admin user logged in:", user.uid);
+                adminLoginSection.classList.add('hidden');
+                adminContentSection.classList.remove('hidden');
+                adminUserIdDisplay.textContent = user.uid;
+
+                // Load Data after successful admin login
+                loadCareerApplications();
+                loadContactInquiries();
+
+            } else {
+                console.log("Not an admin or logged out.");
+                adminLoginSection.classList.remove('hidden');
+                adminContentSection.classList.add('hidden');
+                // Clear any displayed data when logged out
+                applicationsTableBody.innerHTML = '<tr><td colspan="6" class="text-center text-gray-500">Please log in as admin to view data.</td></tr>';
+                contactInquiriesTableBody.innerHTML = '<tr><td colspan="6" class="text-center text-gray-500">Please log in as admin to view data.</td></tr>';
+
+                // Attempt anonymous sign-in if not already authenticated (for general site browsing)
+                try {
+                    if (!auth.currentUser) {
+                        if (initialAuthToken) {
+                            await signInWithCustomToken(auth, initialAuthToken);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error during anonymous fallback sign-in:", error);
+                }
+            }
+        });
+
+        // --- Data Loading Functions ---
+
+        /**
+         * Loads and displays career application data from Firestore.
+         * Uses collectionGroup to query 'applications' across all users.
+         */
+        function loadCareerApplications() {
+            // Firestore rules must allow read for authenticated users on `artifacts/{appId}/users/{userId}/applications`
+            // For admin to read all, a security rule like:
+            // match /artifacts/{appId}/users/{userId}/applications/{appDocId} {
+            //   allow read: if request.auth != null && request.auth.token.email == 'admin@example.com';
+            // }
+            // or if the admin has a custom claim:
+            // allow read: if request.auth.token.admin == true;
+            // You may need to create a composite index for collectionGroup queries in Firebase console.
+            const applicationsQuery = query(collectionGroup(db, 'applications'));
+
+            onSnapshot(applicationsQuery, (snapshot) => {
+                applicationsTableBody.innerHTML = ''; // Clear existing data
+                if (snapshot.empty) {
+                    applicationsTableBody.innerHTML = '<tr><td colspan="6" class="text-center text-gray-500">No career applications found.</td></tr>';
+                    return;
+                }
+
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    const row = applicationsTableBody.insertRow();
+
+                    row.insertCell().textContent = data.fullName || 'N/A';
+                    row.insertCell().textContent = data.email || 'N/A';
+                    row.insertCell().textContent = data.status || 'N/A';
+                    row.insertCell().textContent = data.paymentTransactionId || 'Pending Payment';
+                    row.insertCell().textContent = data.submittedDate ? new Date(data.submittedDate).toLocaleString() : 'N/A';
+                    row.insertCell().textContent = data.userId || 'N/A'; // Display the user ID
+                });
+            }, (error) => {
+                console.error("Error fetching career applications:", error);
+                applicationsTableBody.innerHTML = `<tr><td colspan="6" class="text-center text-red-500">Error loading applications: ${error.message}</td></tr>`;
+            });
+        }
+
+        /**
+         * Loads and displays contact inquiry data from Firestore.
+         */
+        function loadContactInquiries() {
+            // Firestore rules must allow read for authenticated users on `artifacts/{appId}/public/data/contactInquiries`
+            // Example rule:
+            // match /artifacts/{appId}/public/data/contactInquiries/{docId} {
+            //   allow read: if request.auth != null && request.auth.token.email == 'admin@example.com';
+            // }
+            const contactCollectionRef = collection(db, `artifacts/${appId}/public/data/contactInquiries`);
+            const q = query(contactCollectionRef, orderBy('submittedDate', 'desc')); // Order by date, requires index
+
+            onSnapshot(q, (snapshot) => {
+                contactInquiriesTableBody.innerHTML = ''; // Clear existing data
+                if (snapshot.empty) {
+                    contactInquiriesTableBody.innerHTML = '<tr><td colspan="6" class="text-center text-gray-500">No contact inquiries found.</td></tr>';
+                    return;
+                }
+
+                snapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    const row = contactInquiriesTableBody.insertRow();
+
+                    row.insertCell().textContent = data.name || 'N/A';
+                    row.insertCell().textContent = data.email || 'N/A';
+                    row.insertCell().textContent = data.subject || 'N/A';
+                    row.insertCell().textContent = (data.message && data.message.length > 50) ? data.message.substring(0, 50) + '...' : data.message || 'N/A';
+                    row.insertCell().textContent = data.submittedDate ? new Date(data.submittedDate.toDate()).toLocaleString() : 'N/A';
+                    row.insertCell().textContent = data.userId || 'N/A'; // Display the user ID (could be anonymous)
+                });
+            }, (error) => {
+                console.error("Error fetching contact inquiries:", error);
+                contactInquiriesTableBody.innerHTML = `<tr><td colspan="6" class="text-center text-red-500">Error loading inquiries: ${error.message}</td></tr>`;
+            });
+        }
+
+        // Initial sign-in attempt (primarily for non-admin users browsing other pages)
+        // This ensures the Firebase SDK is initialized for other parts of the site
+        (async () => {
+            try {
+                if (!auth.currentUser) {
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                }
+            } catch (error) {
+                console.error("Error during initial anonymous sign-in in admin portal:", error);
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRE - A Time to Relax for the Elderly</title>
+    <!-- Favicon - using a simple emoji as a placeholder for a professional icon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='80' text-anchor='middle' dominant-baseline='central'%3E👵%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply bg-gray-50 text-gray-800;
+        }
+        /* Custom styles for gradients and shadows */
+        .gradient-bg-hero {
+            background: linear-gradient(to right, #6EE7B7, #3B82F6);
+        }
+        .gradient-bg-footer {
+            background: linear-gradient(to right, #3B82F6, #6EE7B7);
+        }
+        .btn-primary {
+            @apply bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg;
+        }
+        .nav-link {
+            @apply text-white hover:text-blue-200 transition duration-300;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+        .footer-link {
+            @apply text-gray-200 hover:text-white transition duration-300;
+        }
+        /* Ensure responsive image handling */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Accessibility improvements */
+        :focus-visible {
+            outline: 2px solid theme('colors.blue.500');
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-800 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo / Site Title -->
+            <a href="index.html" class="text-white text-2xl font-bold rounded-lg p-2 transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                TRE <span class="text-base font-normal block -mt-1">Geriatric Care</span>
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none focus:ring-2 focus:ring-blue-300 p-2 rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden lg:flex space-x-6">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="careers.php" class="nav-link">Careers</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+               
+                 <!-- Added link -->
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-menu" class="hidden lg:hidden bg-blue-700 mt-2 rounded-lg">
+            <ul class="flex flex-col items-center py-4 space-y-3">
+                <li><a href="index.html" class="nav-link block px-4 py-2">Home</a></li>
+                <li><a href="about.html" class="nav-link block px-4 py-2">About Us</a></li>
+                <li><a href="services.html" class="nav-link block px-4 py-2">Services</a></li>
+                <li><a href="careers.php" class="nav-link block px-4 py-2">Careers</a></li>
+                <li><a href="contact.html" class="nav-link block px-4 py-2">Contact Us</a></li>
+                <li><a href="client_portal.html" class="nav-link block px-4 py-2">Client Portal</a></li>
+                <li><a href="payment.html" class="nav-link block px-4 py-2">Make Payment</a></li> <!-- Added link -->
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="gradient-bg-hero text-white py-20 text-center px-4 rounded-b-3xl shadow-xl">
+            <div class="container mx-auto max-w-4xl">
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">
+                    TRE: A Time to Relax for the Elderly
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 animate-fade-in-up">
+                    "They raised us, now it's our turn to raise them."
+                </p>
+                <p class="text-lg md:text-xl mb-10">
+                    Welcome to TRE, a modern geriatric care center in Birmingham, UK, dedicated to providing honor, love, and professional care to our beloved elders.
+                </p>
+                <div class="space-x-4">
+                    <a href="services.html" class="btn-primary">Explore Our Services</a>
+                    <a href="careers.php" class="btn-primary bg-transparent border-2 border-white hover:bg-white hover:text-blue-600">Join Our Team</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Snapshot Section -->
+        <section id="about-snapshot" class="py-16 px-4">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl font-bold text-center mb-12 text-blue-800">About The Kenrick Centre</h2>
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="card p-8 bg-blue-50">
+                        <h3 class="text-2xl font-semibold mb-4 text-blue-700">Our History</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            The Kenrick Centre was established in 1985 as a cornerstone of Birmingham City Council's commitment to providing exceptional care for the elderly in our community. Located in the heart of Harborne, Birmingham, the centre was founded to address the growing need for compassionate, high-quality TRE. Over the years, it has grown into a trusted hub for elderly support, offering a range of services tailored to enhance the well-being and independence of our residents. With a legacy of care spanning nearly four decades, The Kenrick Centre remains dedicated to uplifting the lives of seniors through personalized and community-focused services.
+                        </p>
+                        <a href="about.html" class="text-blue-600 hover:underline font-medium">Read More About Us &rarr;</a>
+                    </div>
+                    <div class="card p-8 bg-green-50">
+                        <h3 class="text-2xl font-semibold mb-4 text-green-700">Our Mission & Vision</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            At The Kenrick Centre, our mission is to provide compassionate, holistic care that empowers elderly individuals to live with dignity, comfort, and joy. We strive to create a nurturing environment where seniors feel valued and supported, offering personalized health, social, and emotional care to meet their unique needs. Our commitment is to enhance the quality of life for every individual we serve while fostering a sense of community and belonging.
+                        </p>
+                        <a href="about.html#mission-vision" class="text-green-600 hover:underline font-medium">View Mission & Vision &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Highlight Section -->
+        <section id="services-highlight" class="bg-blue-100 py-16 px-4 rounded-tl-3xl rounded-br-3xl shadow-inner">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl font-bold text-center mb-12 text-blue-800">Our Comprehensive Services</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="card bg-white">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">Home Health Care</h3>
+                        <p class="text-gray-700">Medical assistance at home, medication management, wound care, dialysis, IV therapy, and physical therapy.</p>
+                        <a href="services.html#home-health-care" class="text-blue-500 hover:underline mt-4 inline-block">Learn More</a>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="card bg-white">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">Activities of Daily Living (ADL)</h3>
+                        <p class="text-gray-700">Assistance with basic activities like bathing, dressing, eating, and mobility, including personal hygiene.</p>
+                        <a href="services.html#adl-support" class="text-blue-500 hover:underline mt-4 inline-block">Learn More</a>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="card bg-white">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">Nutrition and Meal Services</h3>
+                        <p class="text-gray-700">Preparation of nutritious meals and home-delivered meals, with customized meal plans for health needs.</p>
+                        <a href="services.html#nutrition-meals" class="text-blue-500 hover:underline mt-4 inline-block">Learn More</a>
+                    </div>
+                    <!-- Service Card 4 -->
+                    <div class="card bg-white">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">Companionship and Social Support</h3>
+                        <p class="text-gray-700">Providing emotional companionship through conversation, games, and social activities for lonely seniors.</p>
+                        <a href="services.html#social-support" class="text-blue-500 hover:underline mt-4 inline-block">Learn More</a>
+                    </div>
+                    <!-- Service Card 5 -->
+                    <div class="card bg-white">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">Mental Health Services</h3>
+                        <p class="text-gray-700">Psychological support for depression, anxiety, or Alzheimer's, including counseling and behavioral therapy.</p>
+                        <a href="services.html#mental-health" class="text-blue-500 hover:underline mt-4 inline-block">Learn More</a>
+                    </div>
+                    <!-- Service Card 6 -->
+                    <div class="card bg-white">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">TRE Management</h3>
+                        <p class="text-gray-700">Personalized care plans, coordination with doctors, and collaboration with families for optimal care decisions.</p>
+                        <a href="services.html#tre-management" class="text-blue-500 hover:underline mt-4 inline-block">Learn More</a>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="services.html" class="btn-primary">View All 11 Services</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action for Careers -->
+        <section class="py-16 px-4 text-center">
+            <div class="container mx-auto max-w-3xl">
+                <h2 class="text-4xl font-bold text-blue-800 mb-6">Join Our Compassionate Team</h2>
+                <p class="text-lg text-gray-700 mb-8">
+                    TRE Geriatric Care offers more than just jobs – we offer opportunities to build better lives and a promising future. Explore our unique benefits, from competitive salaries and free accommodation to visa support and career development.
+                </p>
+                <a href="careers.php" class="btn-primary bg-green-600 hover:bg-green-700">Apply Now for a Rewarding Career</a>
+            </div>
+        </section>
+
+        <!-- Contact Information Section -->
+        <section class="bg-gray-800 text-white py-16 px-4 rounded-t-3xl shadow-xl">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="text-4xl font-bold mb-8">Connect With Us</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="flex flex-col items-center">
+                        <svg class="w-10 h-10 text-blue-400 mb-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+                        <p class="text-lg font-semibold">Address</p>
+                        <p class="text-gray-300">Mill Farm Road, Harborne, Birmingham B17 0QX, UK</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <svg class="w-10 h-10 text-blue-400 mb-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"/></svg>
+                        <p class="text-lg font-semibold">Phone</p>
+                        <p class="text-gray-300">0121 675 0800</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <svg class="w-10 h-10 text-blue-400 mb-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <p class="text-lg font-semibold">Email</p>
+                        <p class="text-gray-300">the.kenrick.centre@birmingham.gov.uk</p>
+                    </div>
+                </div>
+                <div class="mt-10">
+                    <a href="contact.html" class="btn-primary bg-blue-500 hover:bg-blue-600">Send Us a Message</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg-footer text-white py-8 px-4 rounded-t-3xl shadow-inner">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold">TRE Geriatric Care</h3>
+                <p class="text-sm text-gray-200">&copy; 2025 All rights reserved.</p>
+            </div>
+            <nav class="flex flex-wrap justify-center md:justify-end space-x-6">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="services.html" class="footer-link">Services</a>
+                <a href="careers.php" class="footer-link">Careers</a>
+                <a href="contact.html" class="footer-link">Contact Us</a>
+                <a href="client_portal.html" class="footer-link">Client Portal</a>
+                <a href="payment.html" class="footer-link">Make Payment</a> <!-- Added link -->
+            </nav>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

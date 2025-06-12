@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TRE Geriatric Care</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' font-size='80' text-anchor='middle' dominant-baseline='central'%3E👵%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply bg-gray-50 text-gray-800;
+        }
+        .gradient-bg-footer {
+            background: linear-gradient(to right, #3B82F6, #6EE7B7);
+        }
+        .btn-primary {
+            @apply bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg;
+        }
+        .nav-link {
+            @apply text-white hover:text-blue-200 transition duration-300;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+        .footer-link {
+            @apply text-gray-200 hover:text-white transition duration-300;
+        }
+        /* Ensure responsive image handling */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Style for form elements */
+        .form-group label {
+            @apply block text-gray-700 text-sm font-bold mb-2;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            @apply shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+        }
+        /* Accessibility improvements */
+        :focus-visible {
+            outline: 2px solid theme('colors.blue.500');
+            outline-offset: 2px;
+        }
+        .map-svg {
+            width: 100%;
+            height: 250px; /* Fixed height for better visual consistency */
+            background-color: #e0f2f7; /* Light blue background for map area */
+            border-radius: 0.75rem; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            overflow: hidden; /* Ensure content stays within bounds */
+        }
+        .map-land {
+            fill: #dbeafe; /* Light blue for water/main background */
+            stroke: #93c5fd; /* Darker blue for borders/shoreline */
+            stroke-width: 0.5;
+        }
+        .map-feature {
+            fill: #bfdbfe; /* A slightly different shade for features */
+        }
+        .map-road {
+            stroke: #9ca3af; /* Gray for roads */
+            stroke-width: 1.5;
+            fill: none;
+            opacity: 0.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .map-road-main {
+            stroke: #60a5fa; /* Blue for main roads */
+            stroke-width: 2.5;
+            fill: none;
+            opacity: 0.9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .map-marker {
+            fill: #ef4444; /* Red marker */
+            stroke: #dc2626;
+            stroke-width: 1;
+        }
+        .map-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            fill: #1f2937; /* Dark text */
+            font-weight: 600;
+        }
+        .map-label-small {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            fill: #4b5563; /* Darker gray for smaller labels */
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-800 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo / Site Title -->
+            <a href="index.html" class="text-white text-2xl font-bold rounded-lg p-2 transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                TRE <span class="text-base font-normal block -mt-1">Geriatric Care</span>
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none focus:ring-2 focus:ring-blue-300 p-2 rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden lg:flex space-x-6">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="careers.php" class="nav-link">Careers</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+                
+                 <!-- Added link -->
+            </nav>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-menu" class="hidden lg:hidden bg-blue-700 mt-2 rounded-lg">
+            <ul class="flex flex-col items-center py-4 space-y-3">
+                <li><a href="index.html" class="nav-link block px-4 py-2">Home</a></li>
+                <li><a href="about.html" class="nav-link block px-4 py-2">About Us</a></li>
+                <li><a href="services.html" class="nav-link block px-4 py-2">Services</a></li>
+                <li><a href="careers.php" class="nav-link block px-4 py-2">Careers</a></li>
+                <li><a href="contact.html" class="nav-link block px-4 py-2">Contact Us</a></li>
+                <li><a href="client_portal.html" class="nav-link block px-4 py-2">Client Portal</a></li>
+                <li><a href="payment.html" class="nav-link block px-4 py-2">Make Payment</a></li> <!-- Added link -->
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow py-16 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h1 class="text-5xl font-extrabold text-center text-blue-800 mb-12">Contact Us</h1>
+
+            <section id="contact-info" class="mb-12 card bg-blue-50">
+                <h2 class="text-3xl font-bold text-blue-700 mb-6 border-b-2 border-blue-300 pb-3">Get in Touch</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-lg text-gray-700">
+                    <div>
+                        <p class="mb-2 flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+                            <strong>Address:</strong> Mill Farm Road, Harborne, Birmingham B17 0QX, UK
+                        </p>
+                        <p class="mb-2 flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"/></svg>
+                            <strong>Phone:</strong> <a href="tel:+441216750800" class="text-blue-600 hover:underline">0121 675 0800</a>
+                        </p>
+                        <p class="mb-2 flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <strong>Email:</strong> <a href="mailto:the.kenrick.centre@birmingham.gov.uk" class="text-blue-600 hover:underline">the.kenrick.centre@birmingham.gov.uk</a>
+                        </p>
+                        <p class="mb-2 flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                            <strong>Source:</strong> <a href="https://www.birmingham.gov.uk" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.birmingham.gov.uk</a>
+                        </p>
+                    </div>
+                    <div>
+                        <!-- More Detailed SVG Sketch Map -->
+                        <svg viewBox="0 0 400 250" class="map-svg" aria-labelledby="mapTitle mapDesc" role="img">
+                            <title id="mapTitle">Detailed Sketch Map of Birmingham</title>
+                            <desc id="mapDesc">A more detailed conceptual map showing a city area with roads, parks, and a marker for TRE Geriatric Care.</desc>
+
+                            <!-- Main Landmass/Area -->
+                            <rect x="0" y="0" width="400" height="250" fill="#f0f9ff" rx="12" ry="12"/>
+                            <path d="M0,50 Q100,0 200,50 T400,100 V250 H0 Z" class="map-land"/>
+                            <path d="M50,250 C150,200 250,230 350,180 V250 Z" class="map-land"/>
+
+                            <!-- Rivers/Major Waterways -->
+                            <path d="M10 180 Q 70 170, 150 200 T 250 190 T 350 210" stroke="#7dd3fc" stroke-width="3" fill="none" opacity="0.8"/>
+                            <path d="M20 100 Q 80 90, 160 120 T 260 110 T 380 140" stroke="#7dd3fc" stroke-width="2" fill="none" opacity="0.7"/>
+
+                            <!-- Conceptual Roads/Street Grid -->
+                            <path d="M50 20 L350 30" class="map-road-main"/>
+                            <path d="M30 60 Q 150 50, 280 80 L 370 70" class="map-road"/>
+                            <path d="M40 120 L 360 130" class="map-road-main"/>
+                            <path d="M100 20 L 100 230" class="map-road"/>
+                            <path d="M200 10 L 200 240" class="map-road-main"/>
+                            <path d="M300 20 L 300 230" class="map-road"/>
+
+                            <!-- Green areas/Parks -->
+                            <rect x="70" y="150" width="80" height="40" fill="#a7f3d0" rx="5" ry="5"/>
+                            <rect x="280" y="10" width="60" height="30" fill="#a7f3d0" rx="5" ry="5"/>
+
+                            <!-- Key Landmarks/Features (conceptual buildings, shapes) -->
+                            <rect x="180" y="40" width="20" height="30" fill="#94a3b8" rx="3" ry="3"/> <!-- Building 1 -->
+                            <circle cx="250" cy="60" r="10" fill="#fcd34d"/> <!-- Landmark 1 -->
+                            <polygon points="120,70 140,70 130,50" fill="#a3a3a3"/> <!-- Triangle Building -->
+
+                            <!-- TRE Marker -->
+                            <circle cx="250" cy="120" r="12" class="map-marker"/>
+                            <circle cx="250" cy="120" r="6" fill="#ffffff"/>
+                            <text x="250" y="120" class="map-text" text-anchor="middle" dominant-baseline="middle" dy="-25">TRE</text>
+
+                            <!-- Area Labels -->
+                            <text x="100" y="35" class="map-label-small">City Center</text>
+                            <text x="320" y="60" class="map-label-small">Park Area</text>
+                            <text x="280" y="160" class="map-label-small">Residential</text>
+                            <text x="180" y="220" class="map-label-small">Harborne (Area)</text>
+
+                            <!-- Compass Rose -->
+                            <g transform="translate(360, 30)">
+                                <line x1="0" y1="-15" x2="0" y2="15" stroke="#4a5568" stroke-width="2"/>
+                                <line x1="-15" y1="0" x2="15" y2="0" stroke="#4a5568" stroke-width="2"/>
+                                <polygon points="0,-15 3, -5 -3, -5" fill="#4a5568"/>
+                                <text x="0" y="-20" text-anchor="middle" font-size="12" fill="#4a5568">N</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact-form" class="mb-12 card bg-teal-50 p-8">
+                <h2 class="text-3xl font-bold text-teal-700 mb-6 border-b-2 border-teal-300 pb-3">Send Us a Message</h2>
+                <form action="process_contact.php" method="POST" class="space-y-6">
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary bg-green-600 hover:bg-green-700">Send Message</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg-footer text-white py-8 px-4 rounded-t-3xl shadow-inner">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold">TRE Geriatric Care</h3>
+                <p class="text-sm text-gray-200">&copy; 2025 All rights reserved.</p>
+            </div>
+            <nav class="flex flex-wrap justify-center md:justify-end space-x-6">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="services.html" class="footer-link">Services</a>
+                <a href="careers.php" class="footer-link">Careers</a>
+                <a href="contact.html" class="footer-link">Contact Us</a>
+                <a href="client_portal.html" class="footer-link">Client Portal</a>
+                <a href="payment.html" class="footer-link">Make Payment</a> <!-- Added link -->
+            </nav>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
