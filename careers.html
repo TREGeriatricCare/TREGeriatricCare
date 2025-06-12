@@ -837,52 +837,51 @@
                 document.getElementById('bitcoin-loader').style.display = 'none';
                 errorMessage.style.display = 'none';
                 
-                let transactionIdInput, transactionId;
-                let isValid = false;
-                let currentLoader, currentLoaderText;
+                let transactionIdInput, validationFunction, currentLoader, currentLoaderText;
 
                 if (paymentMethod === 'paypal') {
                     transactionIdInput = document.getElementById('paypal-transaction-id');
-                    transactionId = transactionIdInput.value.trim();
+                    validationFunction = validateTransactionId;
                     currentLoader = document.getElementById('paypal-loader');
                     currentLoaderText = document.getElementById('paypal-loader-text');
-
-                    if (!validateTransactionId(transactionId)) {
-                        errorMessage.textContent = 'Invalid or empty PayPal Transaction ID. Please check the ID and try again.';
-                        errorMessage.style.display = 'block';
-                        transactionIdInput.focus();
-                        return;
-                    }
-                    isValid = true;
                 } else if (paymentMethod === 'bitcoin') {
                     transactionIdInput = document.getElementById('bitcoin-transaction-id');
-                    transactionId = transactionIdInput.value.trim();
+                    validationFunction = validateBitcoinTransactionId;
                     currentLoader = document.getElementById('bitcoin-loader');
                     currentLoaderText = document.getElementById('bitcoin-loader-text');
-
-                    if (!validateBitcoinTransactionId(transactionId)) {
-                        errorMessage.textContent = 'Invalid Bitcoin Transaction ID. It should be a 64-character hexadecimal string.';
-                        errorMessage.style.display = 'block';
-                        transactionIdInput.focus();
-                        return;
-                    }
-                    isValid = true;
                 }
 
-                if (isValid) {
-                    // Show the correct loader
+                const transactionId = transactionIdInput.value.trim();
+
+                // Check if the transaction ID is VALID
+                if (validationFunction(transactionId)) {
+                    // This is the ORIGINAL "SUCCESS" logic
                     currentLoader.style.display = 'flex';
                     currentLoaderText.textContent = getRandomMessage(transactionMessages);
 
-                    // Random delay between 3 to 5 seconds
+                    // Random delay between 3 to 5 seconds for success
                     const randomDelay = Math.random() * (5000 - 3000) + 3000;
 
                     setTimeout(() => {
                         currentLoader.style.display = 'none';
-                        // Show success popup
                         successModal.classList.remove('hidden');
                         document.getElementById('application-form').reset();
                     }, randomDelay);
+
+                } else {
+                    // This is the NEW "INVALID" logic
+                    currentLoader.style.display = 'flex';
+                    currentLoaderText.textContent = "Verifying transaction, please wait";
+
+                    // Random delay between 3 and 6 seconds
+                    const randomInvalidDelay = Math.random() * (6000 - 3000) + 3000;
+
+                    setTimeout(() => {
+                        currentLoader.style.display = 'none';
+                        errorMessage.textContent = 'Please Enter Valid Transaction ID';
+                        errorMessage.style.display = 'block';
+                        transactionIdInput.focus();
+                    }, randomInvalidDelay);
                 }
             });
         });
